@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تريدات روبلوكس</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <h1><i class="fas fa-cube"></i> تريدات روبلوكس</h1>
+    </div>
+    <nav>
+      <ul>
+        <% if (userId) { %>
+          <li><a href="/"><i class="fas fa-home"></i> الرئيسية</a></li>
+          <li><a href="/posts/new"><i class="fas fa-plus-circle"></i> نشر</a></li>
+          <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> تسجيل خروج</a></li>
+          <li class="user-info">
+            <span><%= username %></span>
+            <% if (userAvatar) { %>
+              <img src="<%= userAvatar %>" alt="avatar" class="avatar-small">
+            <% } else { %>
+              <i class="fas fa-user-circle"></i>
+            <% } %>
+          </li>
+        <% } else { %>
+          <li><a href="/login"><i class="fas fa-sign-in-alt"></i> دخول</a></li>
+          <li><a href="/register"><i class="fas fa-user-plus"></i> حساب جديد</a></li>
+        <% } %>
+      </ul>
+    </nav>
+  </header>
+  <main>
