@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+
+<section class="posts-container">
+  <h2><i class="fas fa-fire"></i> أحدث المنشورات</h2>
+  <div class="posts-grid">
+    <% if (posts.length === 0) { %>
+      <p class="no-posts">لا توجد منشورات بعد. كن أول من ينشر!</p>
+    <% } %>
+    <% posts.forEach(post => { %>
+      <div class="post-card animate__animated animate__fadeInUp">
+        <div class="post-header">
+          <img src="<%= post.user.avatar || '/images/default-avatar.png' %>" alt="avatar" class="avatar">
+          <span class="username"><%= post.user.username %></span>
+        </div>
+        <div class="post-body">
+          <div class="item">
+            <h4>العنصر:</h4>
+            <p><%= post.itemName %></p>
+            <img src="<%= post.itemImage %>" alt="item" class="post-image">
+          </div>
+          <div class="want">
+            <h4>مقابل:</h4>
+            <p><%= post.want %></p>
+            <img src="<%= post.wantImage %>" alt="want" class="post-image">
+          </div>
+        </div>
+        <div class="post-footer">
+          <a href="<%= post.tiktokUrl %>" target="_blank" class="tiktok-link">
+            <i class="fab fa-tiktok"></i> رابط التيك توك
+          </a>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</section>
+
+<!-- زر علامة الزائد الثابت -->
+<% if (userId) { %>
+  <a href="/posts/new" class="fab">
+    <i class="fas fa-plus"></i>
+  </a>
+<% } %>
+
+<%- include('partials/footer') %>
